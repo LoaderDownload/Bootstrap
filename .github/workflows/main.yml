@@ -18,10 +18,6 @@ jobs:
           set -x
           git clone --recursive https://github.com/roothide/Bootstrap ${{ github.workspace }}
           
-      - name: Install Procursus
-        uses: dhinakg/procursus-action@main
-        with:
-          packages: ldid findutils sed coreutils make
 
       - name: Install THEOS
         run: |
@@ -38,14 +34,6 @@ jobs:
           rm $THEOS/sdks/iPhoneOS16.5.sdk.tar
           cd $BASEDIR
 
-      - name: Build and Install trustcache
-        run: |
-          set -x
-          git clone https://github.com/CRKatri/trustcache
-          cd trustcache
-          gmake -j$(sysctl -n hw.physicalcpu) OPENSSL=1
-          sudo cp trustcache /opt/procursus/bin/
-
       - name: Set Environment Variables
         run: |
           set -x
@@ -56,10 +44,6 @@ jobs:
           echo "ctimestamp=${TS}" >> $GITHUB_ENV
           echo "shorthash=${SHASH}" >> $GITHUB_ENV
 
-      - name: Install libarchive
-        run: |
-          brew install libarchive
-
       - name: Build
         run: |
           set -x
@@ -68,7 +52,8 @@ jobs:
           
           gmake -j$(sysctl -n hw.physicalcpu)
           TAG=$(git describe --tags --abbrev=0)
-        
+          install 
+          ls
           echo "tag=${TAG}" >> $GITHUB_ENV
 
       - name: Upload Artifact
@@ -77,4 +62,4 @@ jobs:
         with:
           name: Bootstrap.tipa
           path: |
-            ${{ github.workspace }}/Application/Bootstrap.tipa
+            ${{ github.workspace }}/Bootstrap.tipa
