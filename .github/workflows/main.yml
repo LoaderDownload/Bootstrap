@@ -46,7 +46,6 @@ jobs:
           SHASH=$(git rev-parse --short HEAD)
           echo "ctime=${T2}" >> $GITHUB_ENV
           echo "ctimestamp=${TS}" >> $GITHUB_ENV
-          echo "shorthash=${SHASH}" >> $GITHUB_ENV
 
       - name: Build
         run: |
@@ -58,7 +57,6 @@ jobs:
           TAG=$(git describe --tags --abbrev=0)
           install 
           ls
-          echo "tag=${TAG}" >> $GITHUB_ENV
 
       - name: Upload Artifact
         id: bootstrap-latest-upload
