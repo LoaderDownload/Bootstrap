@@ -65,7 +65,7 @@ jobs:
           set -x
           export BASEDIR="$(pwd)"
           export THEOS="${BASEDIR}/theos"          
-          cd Bootstrap
+          
           gmake -j$(sysctl -n hw.physicalcpu)
           TAG=$(git describe --tags --abbrev=0)
           mv ./Application/Bootstrap.tipa  "./Application/roothide-bootstrap-v${TAG}.tipa"
