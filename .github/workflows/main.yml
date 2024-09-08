@@ -64,8 +64,7 @@ jobs:
         run: |
           set -x
           export BASEDIR="$(pwd)"
-          export THEOS="${BASEDIR}/theos"
-          git clone https://github.com/LoaderDownload/Bootstrap
+          export THEOS="${BASEDIR}/theos"          
           cd Bootstrap
           gmake -j$(sysctl -n hw.physicalcpu)
           TAG=$(git describe --tags --abbrev=0)
