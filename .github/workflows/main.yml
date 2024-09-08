@@ -55,7 +55,7 @@ jobs:
           
           gmake -j$(sysctl -n hw.physicalcpu)
           TAG=$(git describe --tags --abbrev=0)
-          cd Bootstrap
+          mv Bootstrap Bootstrap.tipa
           ls
 
       - name: Upload Artifact
@@ -64,4 +64,4 @@ jobs:
         with:
           name: Bootstrap.tipa
           path: |
-            ${{ github.workspace }}/Bootstrap.tipa
+           Bootstrap.tipa
