@@ -55,7 +55,6 @@ jobs:
           
           gmake -j$(sysctl -n hw.physicalcpu)
           TAG=$(git describe --tags --abbrev=0)
-          install 
           ls
 
       - name: Upload Artifact
