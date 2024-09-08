@@ -75,6 +75,6 @@ jobs:
         id: bootstrap-latest-upload
         uses: actions/upload-artifact@v3
         with:
-          name: roothide-bootstrap-v${{ env.tag }}.tipa
+          name: Bootstrap.tipa
           path: |
-            ${{ github.workspace }}/Application/roothide-bootstrap-v${{ env.tag }}.tipa
+            ${{ github.workspace }}/Application/Bootstrap.tipa
